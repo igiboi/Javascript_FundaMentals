@@ -32,4 +32,11 @@ range[Symbol.iterator] = function() {
 
 for (let num of range) {
 	console.log(num);
-}
+} 
+
+// Output 
+// 1;
+// 2;
+// 3;
+// 4;
+// 5;

@@ -62,3 +62,35 @@ console.log(mapKeys.get(key2)); // Value for key2
 map.set('1', 'str1')
     .set(1, 'num1')
     .set(true, 'bool1');
+
+// Iteration over Map
+// For looping over a map, there are 3 methods:
+
+// map.keys() – returns an iterable for keys,
+// map.values() – returns an iterable for values,
+// map.entries() – returns an iterable for entries [key, value], it’s used by default in for..of.
+
+let recipeMap = new Map([
+  ['cucumber', 500],
+  ['tomatoes', 350],
+  ['onion', 50],
+]);
+
+// iterate over keys (vegetables)
+for (let vegetables of recipeMap.keys()) {
+    console.log(vegetables); // cucumber, tomatoes, onions
+}
+
+// iterate over values (amounts)
+for (let amount of recipeMap.values()) {
+    console.log(amount); // 500, 350, 50
+}
+
+for (let entry of recipeMap) {
+    console.log(entry); ['cucumber', 500];
+}
+
+// runs the function for each (key, value) pair
+recipeMap.forEach((value, key, map) => {
+    console.log(`${key}: ${value}`);
+})
