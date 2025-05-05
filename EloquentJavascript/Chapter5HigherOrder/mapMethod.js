@@ -35,3 +35,40 @@ console.log(living); // [ true, false, true, false ]
 // Combine with filter to only get living 
 const livingNames = map(scripts.filter(s => s.living), s => s.name);
 console.log(livingNames);
+
+//  Exercise 1: Double every number
+// const nums = [2, 4, 6, 8];
+// const double = nums.map(n => n * 2);
+
+// console.log(double);
+
+//  Exercise 2: Convert to strings
+const nums = [1, 2, 3];
+
+const string = nums.map(n => n + '');
+
+console.log(string); // [ '1', '2', '3' ]
+
+// Exercise 3: Add “Hello” to each name
+const namesHello = ['Alice', 'Bob', 'Charlie'];
+
+const hello = namesHello.map(n => 'Hello ' + n);
+
+console.log(hello);
+
+// Exercise 4: Get name from array of objects
+const users = [
+  { name: 'Luigi', age: 29 },
+  { name: 'Peach', age: 25 },
+];
+
+const fetchName = users.map((user) => user.name);
+
+console.log(fetchName);
+
+// Exercise 5: Return lengths of words
+const words = ['apple', 'banana', 'kiwi'];
+
+const wordLengths = words.map(word => word.length);
+
+console.log(wordLengths);

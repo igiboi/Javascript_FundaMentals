@@ -43,3 +43,12 @@ console.log(every([], n => n < 10));                   // true
 console.log(everyUsingSome([1, 3, 5], n => n < 10));   // true
 console.log(everyUsingSome([2, 4, 16], n => n < 10));  // false
 console.log(everyUsingSome([], n => n < 10));          // true
+
+
+let arrays = [[1, 2, 3], [4, 5], [6]];
+
+let flattened = arrays.reduce((accumulator, current) => {
+  return accumulator.concat(current);
+}, []);
+
+console.log(flattened); // [ 1, 2, 3, 4, 5, 6 ]
