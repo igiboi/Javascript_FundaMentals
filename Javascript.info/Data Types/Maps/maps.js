@@ -1,8 +1,8 @@
 let map = new Map();
 
-map.set('1', 'str1'); // a string key
-map.set(1, 'num1');   // a numeric key
-map.set(true, 'bool1'); // a boolean key
+map.set('1', 'str1'); // (a string key, value(str1))
+map.set(1, 'num1');   // (a numeric key, value(num1))
+map.set(true, 'bool1'); // (a boolean key, value(bool1))
 
 console.log(map.get(1)); // num1
 console.log(map.get('1')); //str1
@@ -87,10 +87,73 @@ for (let amount of recipeMap.values()) {
 }
 
 for (let entry of recipeMap) {
-    console.log(entry); ['cucumber', 500];
+    console.log(entry); // ['cucumber', 500];
 }
 
 // runs the function for each (key, value) pair
-recipeMap.forEach((value, key, map) => {
+recipeMap.forEach((value, key) => {
     console.log(`${key}: ${value}`);
 })
+
+let mapPractice = new Map();
+
+mapPractice.set('fruit', 'banana');
+
+console.log(mapPractice.get('fruit')); // banana
+
+// Given a string, count the frequency of each word using a Map.
+
+const text = "hello world hello map";
+
+function countWords(str) {
+    const words = str.split('');
+    const wordMap = new Map();
+
+    for (const word of words) {
+        if (wordMap.has(word)) {
+            wordMap.set(word, wordMap.get(word) + 1);
+        } else {
+            wordMap.set(word, 1);
+        }
+    }
+    return wordMap; 
+}
+
+console.log(countWords('hello'));
+// Expected Output: Map { 'hello' => 2, 'world' => 1, 'map' => 1 }
+
+
+function nonRepeatingWords(str) {
+  const words = str.split(' ');
+  const wordMap = new Map();
+
+  // First pass: count word frequencies
+  for (const word of words) {
+    if (wordMap.has(word)) {
+      wordMap.set(word, wordMap.get(word) + 1);
+    } else {
+      wordMap.set(word, 1);
+    }
+  }
+  // Second pass: find the first non-repeating word
+  for (const word of words) {
+    if (wordMap.get(word) === 1) {
+      return word;
+    }
+  }
+
+  return null; // if all words repeat
+}
+
+
+function frequeyncyWord(arr) {
+  const wordMap = new Map();
+  const result = [];
+
+  for (const item of arr) {
+    if (!wordMap.has(item)) {
+      result.push(item);
+      wordMap.set(item, true); // ✅ mark as seen
+    }
+  }
+}

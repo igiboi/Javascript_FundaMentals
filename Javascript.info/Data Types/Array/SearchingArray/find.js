@@ -60,15 +60,12 @@ function findElementByCondition(arr) {
     return arr.find((item, index) => item === index * 3); 
 }
 
-
 console.log(findElementByCondition([5, 3, 6, 9, 20])); // Output: 3
-
 
 // Problem 4: Find the First Palindrome
 // Task:
 // Write a function findFirstPalindrome(words) that accepts an array of strings and returns the first palindrome
 // (a string that reads the same backward as forward).If no palindrome exists, return undefined.
-
 
 function findFirstPalindrome(words) {
   return words.find(word => {
@@ -81,3 +78,36 @@ function findFirstPalindrome(words) {
 // Example usage:
 console.log(findFirstPalindrome(["hello", "racecar", "world", "level"]));
 // Expected output: "racecar"
+
+const names = ['Alice', 'Bob', 'John', 'Jill'];
+// Find: first name starting with "J"
+
+const result = names.find(name => name.startsWith('J')); 
+  
+console.log(result);
+
+
+const numbersGreaterThan10 = [3, 7, 9, 12, 15];
+// Find: first number greater than 10
+
+const first10 = numbersGreaterThan10.find(number => number > 10);
+
+console.log(first10); // 12
+
+const products = [
+  { id: 101, name: 'Keyboard' },
+  { id: 102, name: 'Mouse' },
+  { id: 103, name: 'Monitor' }
+];
+// Find: product with id === 102
+
+const findProduct = products.find(product => product.id === 102);
+
+console.log(findProduct);
+
+const letters = ['a', 'b', 'c'];
+// Find: letter === "z"
+
+const resultLetters = letters.find(letter => letter === 'z');
+
+console.log(resultLetters);

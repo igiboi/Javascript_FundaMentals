@@ -48,3 +48,26 @@ function filterShortWords(words, minLength) {
 }
 
 console.log(filterShortWords(["apple", "hi", "banana", "ok", "pineapple"], 5));
+
+
+const numbers = [1, 2, 3, 4, 5, 6];
+// Get all even numbers
+const filterAllEvenNumbers = numbers.filter(number => number % 2 === 0);
+
+console.log(filterAllEvenNumbers);
+
+let arr = [5, 3, 8, 1];
+
+function filterRange(arr, a, b) {
+  const result = arr.filter(number => (number >= a && number <= b));
+
+  return result;
+}
+
+let filtered = filterRange(arr, 1, 4);
+
+console.log(filtered);
+
+function groupById(arr) {
+  
+}
