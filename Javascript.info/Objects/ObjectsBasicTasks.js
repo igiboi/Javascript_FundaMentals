@@ -1,5 +1,7 @@
 // Task 1
 
+const { use } = require("react");
+
 // Create an empty object user.
 const user = {};
 
@@ -84,4 +86,37 @@ const animals = {};
 
 animals['name'] = 'fluffles';
 
-console.log(animals.name); // fluffles 
+console.log(animals.name); // fluffles
+
+
+const userProfile = {
+  name: 'Luigi',
+  age: 28,
+};
+
+let clone = Object.assign({}, userProfile);
+
+clone.age = 30;
+
+clone.age = 30;
+
+console.log(clone);
+
+// spread syntax 
+let cloneSpread = { ...userProfile };
+
+
+const user = {
+  name: 'Luigi',
+  preferences: {
+    theme: 'light',
+    fontSize: 14,
+  },
+};
+
+let cloneStructured = structuredClone(user);
+
+cloneStructured.preferences.theme = 'dark';
+
+console.log(cloneStructured.preferences.theme);
+console.log(user.preferences.theme);
