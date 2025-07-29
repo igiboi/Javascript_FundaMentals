@@ -1,6 +1,6 @@
-function customIndexOf(arr, value) {
+function customIndexOf(arr, start, value) {
   // loop through the array
-  for (let i = 0; i < arr.length; i++) {
+  for (let i = start; i < arr.length; i++) {
     if (arr[i] === value) {
       return i;
     }
@@ -9,4 +9,4 @@ function customIndexOf(arr, value) {
   // outside the loop return false
 }
 
-console.log(customIndexOf(['a', 'b', 'c'], 'b'));
+console.log(customIndexOf(['a', 'b', 'c'], 1, 'c')); // index of 2 

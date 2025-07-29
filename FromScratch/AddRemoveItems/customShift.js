@@ -4,7 +4,7 @@ function customShift(arr) {
   const removeFirstItem = arr[0]; // grab the first value
 
   for (let i = 0; i < arr.length - 1; i++) {
-    //  [ [0]: x, [1]: y, [2]: z ]
+    //  [ [0]: x, [1]: y, [2]: z]
     // Hey, copy the value at index 1 ('y') and store it at index 0
     arr[i] = arr[i + 1];
     // i = 0: arr[0] = arr[1] → becomes 'y'
