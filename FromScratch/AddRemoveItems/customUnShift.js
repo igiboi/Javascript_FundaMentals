@@ -7,6 +7,11 @@ function customUnshift(arr, value) {
     // Step 2: Shift each value one step to the right
     // Example: arr[2] = arr[1] (copy 'c' to new position)
     //          arr[1] = arr[0] (copy 'b' to new position)
+
+    // Left side = new position (where you’re putting something)
+    // Right side = the original element (the thing you're copying)
+    
+    // arr[i + 1] = arr[i] → move current item one step right
     arr[i + 1] = arr[i];
   }
 
