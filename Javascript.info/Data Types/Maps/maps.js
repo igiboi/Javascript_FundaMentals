@@ -16,15 +16,17 @@ console.log(map.size); // 3
 
 // Map can also use objects as keys 
 let Luigi = { name: 'Luigi' };
+let Bruno = { name: 'Bruno' };
 
 // for every user, let's store their visits count
 let visitsCountMap = new Map();
 
 // Luigi is the key for the map
 visitsCountMap.set(Luigi, 123);
+visitsCountMap.set(Bruno, 23);
 
-console.log(visitsCountMap.get(Luigi)) // 123
-
+console.log(visitsCountMap.get(Luigi)); // 123
+console.log(visitsCountMap.get(Bruno));
 // Using objects as keys is one of the most notable and important Map features.
 // The same does not count for Object.String as a key in Object is fine,
 // but we can’t use another Object as a key in Object.

@@ -31,7 +31,6 @@ function addProduct(product) {
   }
 }
 
-
 function repeatStringNumTimes(str, num) {
   if (num <= 0) return ""; // handle edge case early
 
