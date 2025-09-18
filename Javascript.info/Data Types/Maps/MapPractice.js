@@ -33,7 +33,7 @@ function groupWordsByLength(words) {
       map.get(len).push(word);
     } else {
       // New length → create array
-      map.set(len, [word]);
+      map.set(len, [word]); 
     }
   }
 

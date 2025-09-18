@@ -159,3 +159,79 @@ function frequeyncyWord(arr) {
     }
   }
 }
+
+
+
+
+
+// 🔹 Part 1: Object Drills (warm-up)
+// 1. Access and Update
+const car = { brand: "Toyota", year: 2020, color: "red" };
+
+// 👉 Task:
+// 1. Print the brand using dot notation.
+console.log(car.brand);
+// 2. Print the color using bracket notation.
+console.log(car['color']);
+// 3. Change the year to 2025.
+console.log(car.year = 2025);
+// 4. Add a new property called "mileage" with value 5000.
+car.mileage = 5000;
+
+console.log(car);
+
+// 2. Dynamic Access
+const fruitInventory = { apple: 10, banana: 5, orange: 8 };
+
+function getStock(fruit) {
+  // 👉 Return how many of that fruit is left
+  const getFruit = fruitInventory[fruit];
+
+  return getFruit;
+}
+
+console.log(getStock("banana")); // 5
+console.log(getStock("apple"));  // 10
+
+// 3. Looping
+const user = { name: "Luigi", age: 27, country: "Philippines" };
+
+// 👉 Loop over the object and print:
+// name: Luigi
+// age: 27
+// country: Philippines
+
+// 🔹 Part 2: Maps Drills
+// 4. Using Objects as Keys
+const visits = new Map();
+
+const user1 = { name: "Alice" };
+const user2 = { name: "Bob" };
+
+// 👉 Store visits count for each user (Alice = 3, Bob = 5).
+// 👉 Retrieve Bob’s visits and print it.
+
+// 5. Iterating a Map
+const scores = new Map();
+scores.set("Alice", 90);
+scores.set("Bob", 75);
+scores.set("Charlie", 85);
+// equality check for get, set 
+//   philoshopy 
+// 👉 Loop through the map and print:
+// Alice: 90
+// Bob: 75
+// Charlie: 85
+
+// 🔹 Part 3: Sets Drills
+// 6. Remove Duplicates
+const numbers = [1, 2, 2, 3, 4, 4, 5];
+
+// 👉 Use a Set to remove duplicates and print: [1, 2, 3, 4, 5]
+
+// 7. Membership Check
+const emails = new Set(["a@example.com", "b@example.com"]);
+
+// 👉 Check if "b@example.com" exists in the set (true).
+// 👉 Add "c@example.com" to the set.
+// 👉 Print the size of the set.
