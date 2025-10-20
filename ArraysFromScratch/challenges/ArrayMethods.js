@@ -352,30 +352,12 @@ function challenge12() {
   const words = ["apple", "banana", "apple", "orange", "banana", "apple"];
 
   // YOUR CODE HERE
-  const result = words.reduce((accumulator, word) => {
-    // accumulator is our object we're building: { apple: 3, banana: 2, ... }
-    // word is the current word from the array: 'apple', 'banana', etc.
+  const result = words.reduce((counts, word) => {
 
-    // Let's break down: accumulator[word] = (accumulator[word] || 0) + 1;
-
-    // Step 1: Check if this word exists in our object
-    // accumulator[word] tries to get the current count
-
-    // Step 2: The || operator (OR)
-    // - If accumulator[word] EXISTS (like 1, 2, 3), use that value
-    // - If accumulator[word] is undefined (word not seen yet), use 0 instead
-
-    // Step 3: Add 1
-    // - If word exists: take its current count and add 1
-    // - If word is new: take 0 and add 1 (which equals 1)
-
-    // Step 4: Store the result back
-    // accumulator[word] = the new count
-
-    accumulator[word] = (accumulator[word] || 0) + 1;
+    counts[word] = (counts[word] || 0) + 1;
 
     // MUST return the accumulator so it's passed to the next iteration
-    return accumulator;
+    return counts;
   }, {}); // Starting value: empty object {}
 
   console.log("Challenge 12:", result);

@@ -291,7 +291,7 @@ const movies = [
 
 function getUnwatchedMovies() {
   // YOUR CODE HERE
-  const result = null;
+  const result = movies.filter((movie) => movie.watched === false);
 
   return result;
 }
@@ -300,8 +300,8 @@ function getUnwatchedMovies() {
 // Use: filter() with a simple boolean property check
 // Real-world: "Show me unread emails", "Show incomplete tasks"
 
-// console.log('Unwatched Movies:', getUnwatchedMovies());
-// console.log('---\n');
+console.log('Unwatched Movies:', getUnwatchedMovies());
+console.log('---\n');
 
 // ========================================
 // FEATURE 2: Get Highly Rated Movies
@@ -311,7 +311,7 @@ function getUnwatchedMovies() {
 
 function getHighlyRatedMovies() {
   // YOUR CODE HERE
-  const result = null;
+  const result = movies.filter(movie => movie.rating <= 8.5);
 
   return result;
 }
@@ -320,8 +320,8 @@ function getHighlyRatedMovies() {
 // Use: filter() with comparison operator
 // Real-world: "Products over $100", "Users with 1000+ followers"
 
-// console.log('Highly Rated (8.5+):', getHighlyRatedMovies());
-// console.log('---\n');
+ console.log('Highly Rated (8.5+):', getHighlyRatedMovies());
+ console.log('---\n');
 
 // ========================================
 // FEATURE 3: Get Movie Titles Only
