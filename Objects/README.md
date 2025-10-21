@@ -67,8 +67,18 @@ response.data.user.profile.name // You'll do this constantly!
 
 **Why it matters:** JSON is THE data format of the web. Every API you'll ever use sends JSON.
 
-### **Advanced Concepts**
-6. **[06-constructors-classes.js](06-constructors-classes.js)** - Classes, inheritance, getters/setters, static methods
+### **File 6: [06-modern-patterns.js](06-modern-patterns.js)** - ES6+ Modern Patterns ⭐ IMPORTANT!
+**What you'll learn:**
+- Property shorthand - `{ name, age }` instead of `{ name: name, age: age }`
+- Computed property names - `{ [variableName]: value }`
+- Arrays of objects - The bridge to array methods!
+
+**Why it matters:** These patterns are in EVERY modern codebase. Property shorthand is everywhere, computed properties handle dynamic data, and arrays of objects is the most common data structure you'll work with.
+
+**This file bridges Objects → Arrays perfectly!**
+
+### **Advanced Concepts (Optional)**
+7. **[06-constructors-classes.js](06-constructors-classes.js)** - Classes, inheritance, getters/setters, static methods
 
 ### **Practice & Challenges**
 7. **[challenges.js](challenges.js)** - Beginner/intermediate challenges with tests

@@ -232,6 +232,23 @@ Object.fromEntries(
 
 ---
 
+### File 6: [06-modern-patterns.js](06-modern-patterns.js) ⭐ DON'T SKIP!
+**Time:** 45-60 minutes total
+
+**NEVER SKIP:** These patterns are EVERYWHERE
+**FOCUS ON:** Arrays of objects (most important!)
+
+**Study order:**
+1. Pomodoro 1: All 4 sections + all challenges
+2. That's it! This is a shorter, focused file
+
+**Key concepts to master:**
+- Property shorthand: `{ name, age }`
+- Computed properties: `{ [key]: value }`
+- Arrays of objects: The data structure you'll use 90% of the time
+
+---
+
 ## 🎯 The 80/20 Rule for Objects
 
 **20% of concepts you'll use 80% of the time:**
