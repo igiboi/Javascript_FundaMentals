@@ -156,7 +156,22 @@ console.log("\n--- Challenge 4: Checking Properties ---");
 // TODO: Create a config object with some properties
 // Write code to check if 'theme' property exists
 // Try all three methods: 'in' operator, hasOwnProperty(), and !== undefined
+const config = {
+  theme: "dark", // UI theme (could be "light" or "dark")
+  language: "en", // Default language
+  showNotifications: true, // Whether to show user notifications
+  autoSave: false, // Automatically save changes
+  version: "1.0.0", // App version
+};
 
+// Using 'in' operator
+console.log("theme" in config); // true
+
+// Using hasOwnProperty
+console.log(config.hasOwnProperty("version")); // true
+
+// Method 3 check if undefined
+console.log(config.language !== undefined); // true
 
 // ============================================
 // 5. METHODS (Functions in Objects)
@@ -206,6 +221,22 @@ console.log("\n--- Challenge 5: Object Methods ---");
 // Add a method 'getArea' that returns width * height
 // Add a method 'getPerimeter' that returns 2 * (width + height)
 // Test both methods
+
+const rectanlge = {
+    width: 50,
+    height: 100,
+
+    getArea(width, height) {
+        return width * height;
+    },
+
+    getPerimeter(width, height) {
+        return 2 * (width + height); 
+    }
+}
+ 
+console.log(rectanlge.getArea(50, 50));
+console.log(rectanlge.getPerimeter(120, 90));
 
 
 // ============================================
@@ -268,6 +299,10 @@ console.log(student.updateGrade(98)); // Updates the grade property
 // 'this' = the object before the dot
 // student.getFullName() → inside the method, 'this' refers to 'student'
 // admin.getFullName() → inside the method, 'this' refers to 'admin'
+// No, a method inside Student class can't directly be called by an Employee instance
+// But, different classes can have their own methods with the same name
+// Or, classes can inherit from a parent class to share methods
+// Or, you can use standalone functions that work with any object
 
 // DEMONSTRATION: Why 'this' is better than hardcoded names
 const teacher = {
@@ -294,6 +329,31 @@ console.log("\n--- Challenge 6: The 'this' Keyword ---");
 // Add a method 'withdraw(amount)' that subtracts from balance and returns new balance
 // Add a method 'getInfo()' that returns a string like: "Account owner: John, Balance: $500"
 // Test all methods
+    
+const bankAccount = {
+    owner: "Luigi",
+    balance: 100,
+
+    deposit(amount) {
+       this.balance = this.balance + amount;
+
+        return this.balance;
+    },
+
+    widthdraw(amount) {
+        this.balance = this.balance - amount;
+
+        return this.balance;
+    },
+
+    getInfo() {
+        return `Account owner: ${this.owner}, Balance: ${this.balance}`;
+    }
+}
+
+console.log(bankAccount.deposit(200)); // 300
+console.log(bankAccount.widthdraw(20)); // 280
+console.log(bankAccount.getInfo()); // Account owner: Luigi, Balance: 280
 
 
 // ============================================
@@ -333,3 +393,37 @@ console.log("\n--- FINAL CHALLENGE ---");
 //   - removeBooks(number) - subtracts from books count
 //   - toggleOpen() - switches isOpen between true and false
 // Test all the methods to make sure they work!
+const library = {
+    
+    name: "Library",
+    location: "12345 yo mama house, 440057",
+    books: 400,
+    isOpen: true,
+
+    getInfo() {
+        return `${this.name}, ${this.location}`;
+    },
+
+    addBooks(num) {
+        this.books = this.books + num;
+
+        return this.books;
+    },
+
+    removeBooks(num) {
+        this.books = this.books - num;
+
+        return this.books;
+    },
+
+    toggleOpen() {
+        this.isOpen = !this.isOpen;
+
+        return this.isOpen;
+    }
+}
+
+console.log(library.getInfo());
+console.log(library.addBooks(40));
+console.log(library.removeBooks(5));
+console.log(library.toggleOpen());
