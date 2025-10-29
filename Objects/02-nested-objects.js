@@ -133,7 +133,22 @@ console.log("\n--- Challenge 2: Arrays in Objects ---");
 //   - players (array of objects, each with: name, position, number)
 // Add at least 3 players
 // Loop through and print each player's info
+ 
+const team = {
+  name: "Los Angeles Lakers",
+  sport: "Basketball",
+  players: [
+    { name: "LeBron James", position: "Forward", number: 23 },
+    { name: "Anthony Davis", position: "Center", number: 3 },
+    { name: "D'Angelo Russell", position: "Guard", number: 1 },
+    { name: "Austin Reaves", position: "Guard", number: 15 },
+  ],
+};
 
+//loop through object
+team.players.forEach(player => {
+    console.log(`${player.name} + ${player.position} + ${player.number}`);
+})
 
 // ============================================
 // 3. REAL-WORLD API EXAMPLE

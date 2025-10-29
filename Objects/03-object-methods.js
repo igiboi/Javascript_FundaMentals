@@ -60,6 +60,7 @@ const keys = Object.keys(user);
 console.log("Keys:", keys);  // ["username", "email", "age", "isActive"]
 
 // Common use: Loop through all keys
+console.log("--- forEach loop ---");
 keys.forEach(key => {
   console.log(`Key: ${key}`);
 });
@@ -77,18 +78,70 @@ const formData = {
   confirmPassword: ""  // Oops! Empty
 };
 
+// This is an ARRAY of strings (field names we want to check)
 const requiredFields = ["username", "email", "password", "confirmPassword"];
-const missingFields = requiredFields.filter(field => !formData[field]);
-console.log("Missing fields:", missingFields);  // ["confirmPassword"]
+
+// .filter() loops through the ARRAY above
+// Each iteration, 'field' is one string from the array
+const missingFields = requiredFields.filter(field => {
+  
+  // ITERATION 1: field = "username"
+  // formData[field] → formData["username"] → "john" (truthy)
+  // !formData[field] → !("john") → false
+  // FALSE = don't include "username" in result
+  
+  // ITERATION 2: field = "email"  
+  // formData[field] → formData["email"] → "john@example.com" (truthy)
+  // !formData[field] → false
+  // FALSE = don't include "email" in result
+  
+  // ITERATION 3: field = "password"
+  // formData[field] → formData["password"] → "secret" (truthy)
+  // !formData[field] → false
+  // FALSE = don't include "password" in result
+  
+  // ITERATION 4: field = "confirmPassword"
+  // formData[field] → formData["confirmPassword"] → "" (FALSY!)
+  // !formData[field] → !("") → true
+  // TRUE = INCLUDE "confirmPassword" in result
+  
+  return !formData[field];  // Return true if field is empty/missing
+});
+
+// missingFields now contains: ["confirmPassword"]
+console.log("Missing fields:", missingFields);
 
 // ============================================
 // CHALLENGE 1: Object.keys()
 // ============================================
 console.log("\n--- Challenge 1: Object.keys() ---");
 // TODO: Create a car object with at least 4 properties (brand, model, year, color)
+const car = {
+  brand: "Toyota",
+  model: "Camry",
+  year: 2023,
+  color: "silver"
+};
+
+console.log(car);
+// Output: { brand: 'Toyota', model: 'Camry', year: 2023, color: 'silver' }
+
+// Access individual properties
+console.log(car.brand);  // "Toyota"
+console.log(car.year);   // 2023
+
 // Use Object.keys() to count how many properties it has
+
+const carObjectKeys = Object.keys(car);
+
+console.log(carObjectKeys); // [ 'brand', 'model', 'year', 'color' ]
+
+
 // Print: "This car object has X properties"
 
+const lengthProperties = carObjectKeys.length;
+
+console.log(`This car object has ${lengthProperties} properties`); // This car object has 4 properties
 
 // ============================================
 // 2. Object.values() - Get all property values
@@ -144,8 +197,23 @@ console.log("Most expensive:", maxPrice);  // 999
 // ============================================
 console.log("\n--- Challenge 2: Object.values() ---");
 // TODO: Create an object with product prices (at least 5 products)
+
+const productPrices = {
+  laptop: 999.99,
+  mouse: 24.99,
+  keyboard: 79.99,
+  monitor: 299.99,
+  headphones: 149.99
+};
+
+console.log(productPrices);
+
 // Use Object.values() to find the maximum and minimum price
-// Hint: Use Math.max(...values) and Math.min(...values)
+const maxProductPrice = Math.max(...Object.values(productPrices));
+console.log("Most expensive:", maxProductPrice); // Most expensive: 999.9
+
+const minProductPrice = Math.min(...Object.values(productPrices));
+console.log("The least expensive:", minProductPrice); // The least expensive: 24.99
 
 
 // ============================================
@@ -178,7 +246,6 @@ entries.forEach(([key, value]) => {
 // Convert to Map (advanced - you can skip this for now)
 const userMap = new Map(entries);
 console.log("As Map:", userMap);
-
 // THE MOST COMMON USE: Loop with both key AND value
 // When you need BOTH the property name AND its value
 
@@ -206,8 +273,20 @@ Object.entries(appSettings).forEach(([setting, value]) => {
 // ============================================
 console.log("\n--- Challenge 3: Object.entries() ---");
 // TODO: Create an inventory object with items and quantities
+const inventory = {
+  apples: 50,
+  bananas: 30,
+  oranges: 25,
+  grapes: 15,
+  watermelons: 10,
+};
+
 // Use Object.entries() to print each item
+const entries = Object.entries(inventory);
+console.log('Inventory', entries);
 // Format: "We have 50 apples in stock"
+
+console.log(`We have ${inventory.apples}`);
 
 
 // ============================================
@@ -242,6 +321,9 @@ const userSettings = {
 
 // Merge objects (later objects override earlier ones)
 const finalSettings = Object.assign({}, defaults, userSettings);
+//            ↑    ↑         ↑
+//         target  1st       2nd (overwrites 1st if keys match)
+
 console.log("Final settings:", finalSettings);
 // { theme: "dark", fontSize: 16, notifications: true }
 
@@ -273,9 +355,29 @@ console.log("Merged with spread:", merged);
 // ============================================
 console.log("\n--- Challenge 4: Object.assign() ---");
 // TODO: Create a 'defaultConfig' object and a 'userConfig' object
-// Merge them so user settings override defaults
-// The merged object should have at least 5 properties total
+const defaultConfig = {
+  theme: "light",
+  language: "en",
+  autoSave: true,
+  timeout: 5000,
+  notificationsEnabled: true,
+  soundEnabled: true,
+};
 
+const userConfig = {
+  theme: "dark",
+  language: "es",
+  soundEnabled: false,
+};
+
+// Merge them so user settings override defaults by spread operator
+const mergedConfig = { ...defaultConfig, ...userConfig };
+
+// Object Assign 
+const objectMerged = Object.assign({}, defaultConfig, userConfig);
+// The merged object should have at least 5 properties total
+console.log('spread operator', mergedConfig);
+console.log('ObjectAssign', objectMerged);
 
 // ============================================
 // 5. Object.freeze() - Make immutable
@@ -381,9 +483,24 @@ for (const [fruit, quantity] of Object.entries(inventory)) {
 // ============================================
 console.log("\n--- Challenge 7: Looping ---");
 // TODO: Create an object with student grades (at least 4 students)
-// Use Object.entries() to loop and print each student's grade
-// Format: "Alice scored 95"
+const studentGrades = {
+  john: 85,
+  sarah: 92,
+  michael: 78,
+  emma: 95,
+  david: 88,
+};
 
+// Use Object.entries() to loop and print each student's grade
+Object.entries(studentGrades).forEach(([studentName, grades]) => {
+    console.log(`${studentName} scored ${grades}`);
+})
+// Format: "Alice scored 95"
+// john scored 85
+// sarah scored 92
+// michael scored 78
+// emma scored 95
+// david scored 88
 
 // ============================================
 // 8. TRANSFORMING OBJECTS
@@ -394,9 +511,20 @@ console.log("\n--- Challenge 7: Looping ---");
 // REAL-WORLD USE: Apply discounts, filter data, transform formats
 
 // THE PATTERN (memorize this!):
-// 1. Object.entries(obj) → convert to array of [key, value] pairs
-// 2. .map() or .filter() → transform the array
-// 3. Object.fromEntries() → convert back to object
+// prices (object)
+//     ↓
+// Object.entries()      ← Convert to array (FIRST)
+//     ↓
+// [["laptop", 1000], ["mouse", 50]]
+//     ↓
+// .map()               ← Transform array (SECOND)
+//     ↓
+// [["laptop", 900], ["mouse", 45]]
+//     ↓
+// Object.fromEntries() ← Convert back to object (THIRD/LAST)
+//     ↓
+// { laptop: 900, mouse: 45 }
+
 
 // This is how professionals transform object data!
 
@@ -428,38 +556,29 @@ const expensiveItems = Object.fromEntries(
 );
 console.log("Expensive items:", expensiveItems);
 
-// MEMORIZE THIS PATTERN - You'll use it CONSTANTLY:
-//
-// Step 1: Object.entries(obj)
-//         → Convert object to array: [[key, value], [key, value], ...]
-//
-// Step 2: .map() or .filter()
-//         → Transform or filter the array
-//
-// Step 3: Object.fromEntries()
-//         → Convert array back to object
-//
-// VISUAL EXAMPLE:
-// { laptop: 1000, mouse: 50 }
-//         ↓ Object.entries()
-// [["laptop", 1000], ["mouse", 50]]
-//         ↓ .map(([item, price]) => [item, price * 0.9])
-// [["laptop", 900], ["mouse", 45]]
-//         ↓ Object.fromEntries()
-// { laptop: 900, mouse: 45 }
-
-// THIS IS HOW PROFESSIONALS WORK WITH OBJECTS!
-// You can't use .map() or .filter() directly on objects
-// So you convert → transform → convert back
-
 // ============================================
 // CHALLENGE 8: Transforming Objects
 // ============================================
 console.log("\n--- Challenge 8: Transforming ---");
 // TODO: Create an object with employee salaries
+const employeeSalaries = {
+  john: 50000,
+  sarah: 65000,
+  michael: 55000,
+  emma: 70000,
+  david: 48000,
+};
 // Create a new object with all salaries increased by 15%
+const increaseSalary = Object.fromEntries(
+    Object.entries(employeeSalaries).map(([employee, salary]) => [employee, salary * .15])
+);
 // Create another object with only employees earning over 60k
+const employeeSalaryOverSixty = Object.fromEntries(
+    Object.entries(employeeSalaries).filter(([employee, salary]) => salary > 60000)
+);
 
+console.log(increaseSalary);
+console.log(employeeSalaryOverSixty);
 
 // ============================================
 // 9. CHECKING OBJECT PROPERTIES
@@ -490,6 +609,17 @@ console.log("Brand descriptor:", descriptor);
 // ============================================
 console.log("\n--- Challenge 9: Property Checking ---");
 // TODO: Create a function that takes an object and a property name
+function propertyCheck(obj, propName) {
+  // Need to check BOTH:
+  // 1. Property exists (hasOwnProperty)
+  const hasProperty = obj.hasOwnProperty(propName);
+  // 2. Value is not undefined
+  const isNotUndefined = obj[propName] !== undefined;
+
+  return hasProperty && isNotUndefined;
+}
+
+console.log(propertyCheck(car, "brand"));
 // Return true if the property exists AND is not undefined
 // Test it with an object that has some undefined properties
 
@@ -536,18 +666,60 @@ console.log("View percentages:", viewPercentages);
 // FINAL CHALLENGE: Combine Everything
 // ============================================
 
-console.log("\n--- FINAL CHALLENGE ---");
-// TODO: Create a gradebook object with student names and their test scores (array of numbers)
+// The Simple Rule:
+// // Want to keep it as an OBJECT?
+// Object.fromEntries(Object.entries(obj).transform(...))
+//        ↑                                              ↑
+//     Use both!
+
+// // Want it as ARRAY/NUMBER/BOOLEAN/ONE VALUE?
+// Object.entries(obj).transform(...)
+//        ↑
+//     Use only this!
+
+// console.log("\n--- FINAL CHALLENGE ---");
+
+// Create a gradebook object with student names and their test scores
+const gradebook = {
+  "Alice": [90, 85, 92, 88, 95],
+  "Bob": [78, 82, 80, 75, 79],
+  "Charlie": [95, 92, 98, 96, 94],
+  "Diana": [88, 86, 90, 85, 87],
+  "Ethan": [72, 75, 70, 68, 73],
+  "Fiona": [91, 89, 93, 90, 92]
+};
+
 // Write code to:
 // 1. Calculate each student's average score
-// 2. Create a new object with student names and their averages
-// 3. Find the student with the highest average
-// 4. Filter students who have an average above 85
-// 5. Print a report showing all the results
+const studentAverages = Object.fromEntries(
+  Object.entries(gradebook).map(([student, scores]) => {
+    const average =
+      scores.reduce((sum, score) => sum + score, 0) / scores.length;
+    return [student, average];
+  })
+);
 
-// Example structure:
-// const gradebook = {
-//   "Alice": [90, 85, 92],
-//   "Bob": [78, 82, 80],
-//   ...
-// };
+// 2. Create a new object with student names and their averages
+console.log(studentAverages);
+
+// 3. Find the student with the highest average
+const highestAverage = Object.entries(studentAverages).reduce((highest, [student, average]) => {
+    if (average > highest.average) {
+        return { student, average };
+    }
+
+    return highest;
+})
+
+console.log(highestAverage);
+// 4. Filter students who have an average above 85
+
+const studentsAboveEightyFive = Object.fromEntries(
+  Object.entries(studentAverages).filter(([student, average]) => {
+    return average > 85;
+  })
+);
+
+
+console.log(studentsAboveEightyFive);
+// 5. Print a report showing all the results
