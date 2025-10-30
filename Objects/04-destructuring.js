@@ -82,8 +82,19 @@ console.log(age, country);
 // ============================================
 console.log("\n--- Challenge 1: Basic Destructuring ---");
 // TODO: Create a car object with: brand, model, year, color
+
+const car = {
+    brand: "Honda",
+    model: "Hatchback",
+    year: 2020,
+    color: "white pearl",
+}
+
 // Destructure all four properties in one line
+const { brand, model, year, color } = car;
+
 // Print all the values
+console.log(brand, model, year, color);
 
 
 // ============================================
@@ -145,6 +156,15 @@ console.log("\n--- Challenge 2: Default Values ---");
 // Destructure it with default values for 4 properties (2 existing, 2 with defaults)
 // Print all 4 values to verify defaults work
 
+const config = {
+  port: 3000,
+  host: "localhost"
+};
+
+const { port, host, ip = 1200, lan = true } = config;
+
+console.log(port, host, ip, lan);
+
 
 // ============================================
 // 3. RENAMING VARIABLES
@@ -186,9 +206,18 @@ console.log("Server host:", serverHost);    // "localhost" (default)
 // ============================================
 console.log("\n--- Challenge 3: Renaming Variables ---");
 // TODO: Create a user object with: firstName, lastName, age
+const user = {
+    firstName: "Luigi",
+    lastName: "Matias",
+    age: 31,
+}
 // Destructure and rename them to: fName, lName, years
-// Print all renamed variables
+const { firstName: fName, lastName: lName, age: years } = user;
 
+// Print all renamed variables
+console.log('First Name', fName);
+console.log('Last Name', lName);
+console.log('age', years);
 
 // ============================================
 // 4. NESTED DESTRUCTURING
@@ -246,10 +275,70 @@ console.log("Coordinates:", lat, lng);
 // CHALLENGE 4: Nested Destructuring
 // ============================================
 console.log("\n--- Challenge 4: Nested Destructuring ---");
-// TODO: Create a restaurant object with nested location and menu
-// Use nested destructuring to extract: restaurant name, city, and first pizza option
-// Print all three values
 
+// TODO: Create a restaurant object with nested location and menu
+const restaurant = {
+  name: "The Golden Fork",
+  rating: 4.5,
+  location: {
+    street: "123 Main Street",
+    city: "New York",
+    state: "NY",
+    zipCode: "10001",
+    coordinates: {
+      lat: 40.7128,
+      lng: -74.006,
+    },
+  },
+  menu: {
+    appetizers: [
+      { name: "Caesar Salad", price: 8.99 },
+      { name: "Mozzarella Sticks", price: 6.99 },
+      { name: "Wings", price: 10.99 },
+    ],
+    entrees: [
+      { name: "Grilled Salmon", price: 22.99 },
+      { name: "Ribeye Steak", price: 32.99 },
+      { name: "Pizza", price: 15.99},
+      { name: "Chicken Alfredo", price: 16.99 },
+    ],
+    desserts: [
+      { name: "Cheesecake", price: 7.99 },
+      { name: "Chocolate Lava Cake", price: 8.99 },
+    ],
+  },
+};
+// Use nested destructuring to extract: restaurant name, city, and first pizza option
+const {
+  name,
+  rating,
+  location: {
+    street,
+    city,
+    state,
+    zipCode,
+    coordinates: { lat, long },
+  },
+  menu: {
+    appetizers: [
+      { name: appetizer1Name, price: appetizer1Price },
+      { name: appetizer2Name, price: appetizer2Price },
+      { name: appetizer3Name, price: appetizer3Price },
+    ],
+    entrees: [
+      { name: entree1Name, price: entree1Price },
+      { name: entree2Name, price: entree2Price },
+      { name: entree3Name, price: entree3Price },
+      { name: entree4Name, price: entree4Price },
+    ],
+    desserts: [
+      { name: dessert1Name, price: dessert1Price },
+      { name: dessert2Name, price: dessert2Price },
+    ],
+  },
+} = restaurant;
+// Print all three values
+console.log(name, city, entree3Name)
 
 // ============================================
 // 5. REST OPERATOR (...)
@@ -276,7 +365,7 @@ console.log("Other details:", otherDetails);
 // THE ... (REST OPERATOR):
 // "Extract 'id' and 'name', put EVERYTHING ELSE in 'otherDetails'"
 
-// VISUAL:
+// VISUAL:2
 // product = { id: 789, name: "Laptop", price: 1200, stock: 5, ... }
 //             ↓         ↓              ↓
 //            id       name       ...otherDetails (all the rest)
@@ -292,9 +381,31 @@ console.log("Other details:", otherDetails);
 // ============================================
 console.log("\n--- Challenge 5: Rest Operator ---");
 // TODO: Create an object with at least 6 properties
-// Destructure 2 specific properties, collect the rest with ...
-// Print both the specific properties and the rest object
+const person = {
+  firstName: "Sarah",
+  lastName: "Johnson",
+  age: 28,
+  email: "sarah.johnson@email.com",
+  city: "Boston",
+  occupation: "Software Engineer",
+  isEmployed: true,
+  hobbies: ["reading", "hiking", "photography"],
+};
 
+// Destructure 2 specific properties, collect the rest with ...
+const { firstName, lastName, ...rest } = person;
+
+// Print both the specific properties and the rest object
+console.log(firstName, lastName, rest);
+
+// Sarah Johnson {
+//   age: 28,
+//   email: 'sarah.johnson@email.com',
+//   city: 'Boston',
+//   occupation: 'Software Engineer',
+//   isEmployed: true,
+//   hobbies: [ 'reading', 'hiking', 'photography' ]
+// }
 
 // ============================================
 // 6. DESTRUCTURING IN FUNCTION PARAMETERS
@@ -352,14 +463,29 @@ function fetchUserData({
   console.log(`Limit: ${limit}`);
 }
 
-fetchUserData({ userId: 123, includeOrders: true });
+ fetchUserData({ userId: 123, includeOrders: true });
+
 
 // ============================================
 // CHALLENGE 6: Function Parameters
 // ============================================
 console.log("\n--- Challenge 6: Function Parameters ---");
 // TODO: Write a function that accepts a destructured object parameter
+// ✅ Function with destructured parameters
 // The function should calculate and return total price (price * quantity)
+function calculateTotal({ price, quantity }) {
+  return price * quantity;
+}
+
+// Test it
+const item1 = { price: 10.99, quantity: 3 };
+console.log(calculateTotal(item1));  // 32.97
+
+const item2 = { price: 25.50, quantity: 2 };
+console.log(calculateTotal(item2));  // 51
+
+// You can pass the object directly too
+console.log(calculateTotal({ price: 15, quantity: 4 }));  //
 // Include default values for optional tax rate (default 0.08)
 // Test with: { price: 100, quantity: 2, tax: 0.1 }
 
@@ -469,8 +595,23 @@ console.log("Min:", min, "Max:", max, "Average:", average);
 // ============================================
 console.log("\n--- Challenge 8: Practical Patterns ---");
 // TODO: Write a function that returns an object with: sum, product, count
-// Destructure the return value to get all three values
-// Test with an array of numbers: [2, 3, 4, 5]
+function operators(numbers) {
+    if (numbers.length === 0) {
+        return { sum: 0, product: 1, count: 0}
+    }
+
+    const sum = numbers.reduce((acc, num) => acc + num, 0);
+    const product = numbers.reduce((acc, num) => acc * num, 1);
+    const count = numbers.length;
+
+    return { sum, product, count };
+}
+
+console.log(operators([1, 2, 3, 4, 5, 6, 6]));
+
+console.log(operators([]));
+
+console.log(operators([5, 10]));
 
 
 // ============================================
@@ -531,16 +672,34 @@ handlePostRequest({
 // FINAL CHALLENGE: Combine Everything
 // ============================================
 console.log("\n--- FINAL CHALLENGE ---");
-// TODO: Create a function called 'processOrder' that accepts a destructured parameter:
-// {
-//   customer: { name, email },
-//   items: [first item, ...rest of items],
-//   shipping: { address, city, zip, express = false },
-//   discount = 0
-// }
-// The function should:
-// 1. Print customer name and email
-// 2. Print the first item and count of remaining items
-// 3. Print shipping city and whether it's express shipping
-// 4. Return an object with: total items count, customer name, express shipping status
-// Test it with a sample order object
+// TODO: Create a function called 'processOrder' that accepts a destructured parameter
+function processOrder({ customer, items, shipping, discount = 0 }) {
+  const { name, email } = customer;
+  const [ firstItem, ...rest ] = items;
+  const { address, city, zip, express = false } = shipping;
+
+  // 1.
+  console.log(`Customer: ${name}, Email: ${email}`);
+
+  // 2. Print the first item and count of remaining items
+  console.log(`First item: ${firstItem}, Remaining items: ${rest.length}`);
+
+  // 3. Print shipping city and whether it's express shipping
+    console.log(`Shipping to: ${city}, Express: ${express}`);
+    
+     return {
+       totalItemsCount: items.length,
+       customerName: name,
+       expressShipping: express,
+     };
+}
+
+const sampleOrder = {
+    customer: { name: "Jane Smith", email: "jane@example.com" },
+    items: ["Laptop", "Mouse", "Keyboard", "Monitor"],
+    shipping: { address: "456 Oak Ave", city: "Los Angeles", zip: "90001", express: true },
+    discount: 10
+};
+
+const result = processOrder(sampleOrder);
+console.log("Returned object:", result);

@@ -1,4 +1,6 @@
- // higher order functions and callbacks to 
+ // PART 4
+ 
+// higher order functions and callbacks to
 
 // A higher order functions a function that returns another function
 function makeAnnouncer() {

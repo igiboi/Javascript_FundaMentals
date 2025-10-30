@@ -8,4 +8,5 @@ function triple(x) {
 
 console.log(triple(5));
 // What happens? → NaN (because double(x) is undefined)
- 
+
+// Part 1

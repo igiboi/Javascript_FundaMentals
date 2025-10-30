@@ -1,3 +1,4 @@
+// PART 3
 function outer() {
     let count = 0;
 

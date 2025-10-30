@@ -1,3 +1,4 @@
+// PART 2
 // making a function does not make that function activate
 // return a function does not make it activate 
 // what activates that 
