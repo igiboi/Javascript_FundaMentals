@@ -1,0 +1,31 @@
+Day 1: Function Fundamentals & Scope
+Concepts to understand:
+
+Function declarations vs expressions vs arrow functions (and when each matters)
+Scope chain - how JavaScript looks up variables
+Lexical scope - where a function is defined determines what it can access
+
+
+Day 2: Closures (This is HUGE for interviews)
+The concept: A closure is when a function "remembers" variables from where it was created, even after that outer function has finished.
+Why it matters: Closures power React hooks, event handlers, private variables, and show up in almost every interview.
+
+Day 3: Higher-Order Functions
+The concept: Functions that take other functions as arguments OR return functions.
+This is your bread and butter - map, filter, reduce are all higher-order functions.
+
+
+Day 4: Callbacks & Function Composition
+
+
+Day 5: The this Keyword (Interview Killer)
+
+
+Day 6 & 7: Build Something Real
+Project: Create a Task Manager (no frameworks)
+Build functions that:
+
+Add tasks with closures to keep IDs private
+Filter tasks (completed/incomplete) using higher-order functions
+Create task factories that return task objects with methods
+Use callbacks for task notifications
