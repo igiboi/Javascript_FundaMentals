@@ -13,7 +13,7 @@ Why it matters: Closures power React hooks, event handlers, private variables, a
 Day 3: Higher-Order Functions
 The concept: Functions that take other functions as arguments OR return functions.
 This is your bread and butter - map, filter, reduce are all higher-order functions.
-
+  
 
 Day 4: Callbacks & Function Composition
 
@@ -29,3 +29,6 @@ Add tasks with closures to keep IDs private
 Filter tasks (completed/incomplete) using higher-order functions
 Create task factories that return task objects with methods
 Use callbacks for task notifications
+
+
+

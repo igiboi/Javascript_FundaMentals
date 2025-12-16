@@ -1,0 +1,361 @@
+# Complete JavaScript Mastery Roadmap
+## (Understanding + Building + Interviews)
+
+---
+
+## PHASE 1: FUNDAMENTALS (Weeks 1-4)
+
+### Week 1: Core Concepts
+- Variables (`let`, `const`, `var`) + hoisting
+- Data types (primitives vs reference)
+- Type coercion & comparisons
+- Operators & control flow
+- **Practice:** 10 Codewars problems (8kyu)
+
+### Week 2: Functions Deep
+- Function declarations vs expressions vs arrow functions
+- **Scope chain & lexical scope**
+- **Closures** (you know this!)
+- **`this` keyword binding rules**
+- **Practice:** Build calculator with closures for state
+
+### Week 3: Arrays & Objects
+- Array methods: `map`, `filter`, `reduce`, `find`, `some`, `every`
+- Object manipulation: `Object.keys/values/entries`
+- Destructuring & spread/rest
+- **Practice:** Data transformation exercises
+
+### Week 4: Higher-Order Functions & Callbacks
+- **Higher-order functions** (you know this!)
+- **Callbacks** (you know this!)
+- Function composition
+- **Project:** Todo app with filters, search, stats
+
+---
+
+## PHASE 2: ASYNC & DOM (Weeks 5-7)
+
+### Week 5: Asynchronous JavaScript
+- Event loop & call stack (CRITICAL for "under the hood")
+- Callbacks & callback hell
+- Promises (creation, chaining, error handling)
+- `async/await`
+- `Promise.all`, `Promise.race`, `Promise.allSettled`
+
+### Week 6: DOM & Events
+- Selecting & manipulating elements
+- Event listeners & event delegation
+- Event bubbling/capturing
+- `preventDefault()`, `stopPropagation()`
+- **Project:** Interactive quiz app
+
+### Week 7: Browser APIs
+- Fetch API (REST APIs)
+- LocalStorage & SessionStorage
+- Timers (`setTimeout`, `setInterval`)
+- **Project:** Weather app with API + localStorage
+
+---
+
+## PHASE 3: UNDER THE HOOD (Weeks 8-10)
+### *This separates good from great developers*
+
+### Week 8: Execution Context & Scope
+- How JavaScript executes code
+- Global vs Function vs Block execution context
+- Scope chain (how variable lookup works)
+- Hoisting (what really happens)
+- Temporal Dead Zone
+
+### Week 9: The Prototype System
+- `__proto__` vs `prototype`
+- Prototypal inheritance
+- Constructor functions
+- `Object.create()`
+- Classes (syntactic sugar over prototypes)
+
+### Week 10: Advanced `this` & Binding
+- 4 rules of `this` binding
+- `call()`, `apply()`, `bind()`
+- Arrow functions and `this`
+- Common `this` gotchas
+- **Practice:** Implement your own `bind()`
+
+---
+
+## PHASE 4: ADVANCED PATTERNS (Weeks 11-13)
+
+### Week 11: Functional Programming
+- Pure functions & immutability
+- Currying & partial application
+- Function composition & pipe
+- Higher-order patterns
+- **Practice:** Build utility library (lodash clone)
+
+### Week 12: Performance & Optimization
+- Memoization (caching with closures)
+- Debounce & throttle
+- Memory leaks & how to avoid them
+- Event loop optimization
+- **Project:** Infinite scroll with performance optimization
+
+### Week 13: Design Patterns
+- Module pattern (closures!)
+- Revealing module pattern
+- Observer/Pub-Sub pattern
+- Singleton pattern
+- Factory pattern
+- **Project:** Build event emitter from scratch
+
+---
+
+## PHASE 5: MODERN JAVASCRIPT (Weeks 14-16)
+
+### Week 14: ES6+ Features
+- Template literals
+- Destructuring (deep)
+- Spread/rest operators
+- Default parameters
+- Enhanced object literals
+- Modules (import/export)
+
+### Week 15: Advanced Async
+- Async iteration & generators
+- `for await...of`
+- Async error handling patterns
+- Race conditions & how to handle them
+- **Project:** Build your own Promise implementation
+
+### Week 16: Modern Tools & Concepts
+- Optional chaining (`?.`)
+- Nullish coalescing (`??`)
+- `Proxy` & `Reflect` (how Vue/React work!)
+- WeakMap & WeakSet
+- Symbols
+
+---
+
+## PHASE 6: INTERVIEW PREPARATION (Weeks 17-20)
+
+### Week 17-18: Data Structures & Algorithms
+**Arrays & Strings:**
+- Two pointers
+- Sliding window
+- Frequency counter
+
+**Objects & Maps:**
+- Hash tables
+- Caching patterns
+
+**Recursion:**
+- Base case + recursive case
+- Call stack understanding
+- Backtracking basics
+
+**Practice:** 3 LeetCode easy problems daily
+
+### Week 19: JavaScript Interview Questions
+**Conceptual Questions:**
+- Explain closures (give 3 examples)
+- Explain event loop (draw diagram)
+- Explain prototypal inheritance
+- Explain `this` in different contexts
+- Difference between `==` and `===`
+- Hoisting examples
+- Event delegation
+
+**Coding Challenges:**
+- Implement `debounce`, `throttle`
+- Implement `Promise.all`
+- Deep clone object
+- Flatten nested array
+- Implement `map`, `filter`, `reduce`
+- Curry function
+- **Practice:** 5 medium LeetCode problems daily
+
+### Week 20: System Design & Real Scenarios
+- Build autocomplete component
+- Build infinite scroll
+- Build state management (mini-Redux)
+- Optimize render performance
+- Handle race conditions
+- Memory leak debugging
+
+---
+
+## PHASE 7: BUILD REAL PROJECTS (Weeks 21-24)
+
+### Project 1: Advanced Todo/Task Manager
+- CRUD operations
+- Drag & drop
+- LocalStorage + API sync
+- Search, filter, sort
+- Undo/redo (command pattern)
+
+### Project 2: E-commerce Frontend
+- Product listing with pagination
+- Shopping cart (state management)
+- Search & filters
+- Debounced search
+- API integration
+- LocalStorage cart persistence
+
+### Project 3: Social Media Dashboard
+- Fetch & display posts
+- Infinite scroll
+- Like/comment system
+- Real-time updates simulation
+- Image lazy loading
+- Performance optimized
+
+### Project 4: Build a Framework/Library
+Choose one:
+- State management library (like Redux)
+- Reactive system (like Vue reactivity)
+- Testing framework (like Jest basics)
+- Your own array methods library
+
+---
+
+## DAILY ROUTINE (Every Single Day)
+
+**Morning (30-45 min):**
+- 2-3 coding challenges (Codewars/LeetCode)
+- Focus on understanding, not just solving
+
+**Midday (60-90 min):**
+- Learn new concept from roadmap
+- Read MDN docs / JavaScript.info
+- Watch YouTube explanations
+
+**Afternoon (60-90 min):**
+- Build/work on current project
+- Apply what you learned
+- Experiment and break things
+
+**Evening (30 min):**
+- Review code you wrote
+- Explain one concept out loud
+- Write it down in your own words
+
+**Weekly:**
+- Write one blog post explaining a concept
+- Review previous week's concepts
+- Mock interview practice (after Week 10)
+
+---
+
+## CRITICAL "UNDER THE HOOD" CONCEPTS
+### *Master these and you'll understand how JavaScript really works*
+
+1. **Execution Context & Call Stack**
+   - How code actually runs
+   - Creation phase vs execution phase
+
+2. **Scope & Closures**
+   - Lexical environment
+   - Scope chain
+   - How closures capture variables
+
+3. **Event Loop**
+   - Call stack, callback queue, microtask queue
+   - Why `setTimeout(fn, 0)` doesn't run immediately
+   - Promises vs callbacks in event loop
+
+4. **Prototypes**
+   - Every object has `__proto__`
+   - How inheritance really works
+   - Why methods should be on prototype
+
+5. **`this` Binding**
+   - 4 binding rules (implicit, explicit, new, default)
+   - Arrow functions don't have `this`
+
+6. **Memory Management**
+   - Garbage collection
+   - Memory leaks (event listeners, closures, timers)
+
+7. **Type Coercion**
+   - How `==` works under the hood
+   - ToNumber, ToString, ToBoolean
+
+---
+
+## RESOURCES (In Order of Importance)
+
+**Must Read:**
+1. **JavaScript.info** - Best explanation of fundamentals
+2. **MDN Web Docs** - Your reference bible
+3. **"You Don't Know JS" by Kyle Simpson** - Deep dive
+4. **"Eloquent JavaScript"** - Problem-solving focus
+
+**Practice:**
+1. **Codewars** (8kyu → 6kyu → 5kyu)
+2. **LeetCode** (Easy → Medium, focus on JavaScript)
+3. **Frontend Mentor** - Real project designs
+4. **JavaScript30** by Wes Bos - 30 projects
+
+**Videos:**
+1. **Namaste JavaScript** (YouTube) - Event loop, hoisting, closures
+2. **Akshay Saini** - How JavaScript works
+3. **Fun Fun Function** - Functional programming
+4. **Traversy Media** - Projects
+
+---
+
+## MILESTONES TO TRACK
+
+✅ **Week 4:** Can build interactive UI with vanilla JS  
+✅ **Week 7:** Can fetch data and handle async operations  
+✅ **Week 10:** Can explain how JavaScript works under the hood  
+✅ **Week 13:** Can implement advanced patterns from scratch  
+✅ **Week 16:** Comfortable with all modern JS features  
+✅ **Week 20:** Can solve medium LeetCode problems  
+✅ **Week 24:** Have 4 portfolio projects + can pass interviews
+
+---
+
+## INTERVIEW READINESS CHECKLIST
+
+**Can you explain these confidently?**
+- [ ] Closures (with 3 examples)
+- [ ] Event loop (draw diagram)
+- [ ] Prototypal inheritance
+- [ ] `this` keyword (4 rules)
+- [ ] Hoisting
+- [ ] Promises vs async/await
+- [ ] Event delegation
+- [ ] Debounce vs throttle
+
+**Can you code these without looking?**
+- [ ] Implement `map`, `filter`, `reduce`
+- [ ] Implement `debounce`
+- [ ] Implement `Promise.all`
+- [ ] Deep clone object
+- [ ] Flatten array
+- [ ] Curry function
+- [ ] Event emitter
+
+**Can you build these?**
+- [ ] Todo app with all features
+- [ ] Fetch data from API
+- [ ] Infinite scroll
+- [ ] Autocomplete component
+- [ ] Shopping cart
+
+---
+
+## THE SECRET FORMULA
+
+**Understanding (40%)** → Read, watch, take notes  
+**Building (40%)** → Write code, break things, fix things  
+**Explaining (20%)** → Teach others, write blogs, mock interviews
+
+Most people only do the first. Great developers do all three.
+
+---
+
+**START TOMORROW:**
+Week 1, Day 1 - Even if you know closures, review the scope chain. Build everything on a rock-solid foundation.
+
+Which concept are you most excited (or nervous) to learn?
