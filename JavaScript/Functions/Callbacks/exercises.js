@@ -70,3 +70,15 @@ const doubled = transform([1, 2, 3], function(n) {
 });
 
 console.log(doubled);  // [2, 4, 6]
+
+
+function mystery(callback) {
+  return callback;
+}
+
+function sayHello() {
+  return "Hello!";
+}
+
+const result = mystery(sayHello);
+console.log(result());
