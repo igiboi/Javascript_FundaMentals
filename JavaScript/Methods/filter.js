@@ -62,3 +62,39 @@ const myFunction = outerFunction();  // outerFunction finishes
 myFunction;  // "Hello" - But inner function still remembers message!
 
 console.log(myFunction());
+
+const people = [
+  { name: 'Alice', age: 17 },
+  { name: 'Bob', age: 22 },
+  { name: 'Charlie', age: 15 },
+  { name: 'Diana', age: 30 },
+];
+
+people.filter(adult => 
+  adult.age >= 18
+)
+// Use filter to return only people aged 18 or older
+// Expected output:
+// [
+//   { name: 'Bob', age: 22 },
+//   { name: 'Diana', age: 30 },
+// ]
+
+const products2 = [
+  { name: 'Shirt', price: 30 },
+  { name: 'Hat', price: 12 },
+  { name: 'Pants', price: 50 },
+  { name: 'Socks', price: 8 },
+  { name: 'Shoes', price: 80 },
+];
+
+console.log(products2.filter(item => item.price > 25)
+);
+
+// Use filter to return only products with a price greater than 25
+// Expected output:
+// [
+//   { name: 'Shirt', price: 30 },
+//   { name: 'Pants', price: 50 },
+//   { name: 'Shoes', price: 80 },
+// ]

@@ -44,3 +44,23 @@ function formatPrices(prices) {
 }
 
 console.log(formatPrices([10, 20, 5]));  // Expected: ["$10.00", "$20.00", "$5.00"]
+
+const products = [
+  { name: 'Shirt', price: 30 },
+  { name: 'Pants', price: 50 },
+  { name: 'Shoes', price: 80 },
+];
+
+
+products.map((product) => ({
+  ...product,
+  discountedPrice: product.price * 0.9,
+}));
+
+
+// Expected output:
+// [
+//   { name: 'Shirt', price: 30, discountedPrice: 27 },
+//   { name: 'Pants', price: 50, discountedPrice: 45 },
+//   { name: 'Shoes', price: 80, discountedPrice: 72 },
+// ]
