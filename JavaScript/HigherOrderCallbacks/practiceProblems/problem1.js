@@ -67,3 +67,69 @@ function allAdults(users) {
 function anyInactive(users) {
   return users.some((user) => !user.active);
 }
+
+
+const products = [
+  { name: "Laptop", price: 999, inStock: true },
+  { name: "Mouse", price: 29, inStock: false },
+  { name: "Monitor", price: 399, inStock: true },
+  { name: "Keyboard", price: 79, inStock: true },
+  { name: "Headphones", price: 199, inStock: false },
+];
+
+function getInStockPrice(products) {
+  return products
+    .filter((item) => item.inStock)
+    .reduce((accumulate, product) => accumulate + product.price, 0);
+}
+
+console.log(getInStockPrice(products));
+
+function getDiscountNames(products) {
+  return products
+    .filter((item) => item.inStock && item.price > 100)
+    .map((product) => `${product.name}: $${(product.price * 0.9).toFixed(2)}`);
+}
+
+console.log(getDiscountNames(products));
+
+
+// Problem 10 
+const orders = [
+  { id: 1, customer: "Alice", items: ["book", "pen", "notebook"], total: 45 },
+  { id: 2, customer: "Bob", items: ["laptop", "mouse"], total: 1200 },
+  { id: 3, customer: "Alice", items: ["eraser"], total: 5 },
+  { id: 4, customer: "Charlie", items: ["book", "highlighter"], total: 30 },
+  { id: 5, customer: "Bob", items: ["keyboard"], total: 150 },
+];
+
+function getCustomerTotal(orders, customerName) {
+  return orders
+    .filter((order) => order.customer === customerName)
+    .reduce((acc, order) => acc + order.total, 0);
+}
+
+console.log(getCustomerTotal(orders));
+
+function getAllItems(orders) {
+  return orders
+    .reduce((accumulate, order) => accumulate.concat(order.items), [])
+}
+
+console.log(getAllItems(orders));
+
+
+// Frequency Counter
+function getTheMostOrderedItem(orders) {
+  const allItems = orders
+    .reduce((accumulate, order) => accumulate.concat(order.items), []);
+  
+  const frequency = allItems.reduce((accumulate, item) => {
+    accumulate[item] = (accumulate[item] || 0) + 1; // increment or initialize
+    return accumulate;
+  }, {});
+  
+  return Object.keys(frequency)
+    .reduce((accumulate, item) => { return frequency[accumulate] > frequency[item] ? accumulate : item }, Object.keys(frequency)[0]);
+ 
+}
