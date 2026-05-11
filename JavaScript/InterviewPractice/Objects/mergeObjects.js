@@ -7,9 +7,11 @@ const obj1 = { a: 1, b: 2 };
 const obj2 = { b: 3, c: 4 };
 
 function mergeObjects(obj1, obj2) {
+  // spread operator copies properties left to right 
+  // duplicate keys are overwritten, so last one wins
   const merged = { ...obj1, ...obj2 }
-  
-  return merged; 
+
+  return merged;
 }
 
 const result = mergeObjects(obj1, obj2);
