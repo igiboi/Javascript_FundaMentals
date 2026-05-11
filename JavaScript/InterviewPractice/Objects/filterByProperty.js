@@ -38,6 +38,7 @@ const products = [
 
 function filterByProperty(arr, key, value) {
   // your code here
+  return arr.filter(product => product[key] === value);
 }
 
 console.log(filterByProperty(products, "category", "Electronics"));

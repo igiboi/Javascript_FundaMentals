@@ -64,11 +64,18 @@ console.log(getProp(user, "age"));  // expected: 28
 
 
 // ---- DRILL 5: Access inside a loop ----
+const user = {
+  id: 1,
+  name: "Alice",
+  age: 28,
+  role: "Engineer",
+};
 const keys = ["id", "name", "age", "role"];
 
 // Loop through the keys array and log the value of each key on the user object
 for (const key of keys) {
   // your code here — one line
+  console.log(user[key]);
   
 }
 
