@@ -42,28 +42,13 @@ console.log(findProduct);
 // ---- PROBLEM 4 ----
 // Display products from cheapest to most expensive.
 // Expected output: products array sorted by price ascending
-// your code here
+// skipped — revisit .sort() with a compare function later
 
 
 // ---- PROBLEM 5 ----
 // Calculate the total value of all products in the store.
 // Expected output: 2064
 // your code here
-
-const products = [
-  { id: 1, name: "Laptop", category: "Electronics", price: 999, inStock: true },
-  { id: 2, name: "Phone", category: "Electronics", price: 699, inStock: false },
-  { id: 3, name: "Shirt", category: "Clothing", price: 29, inStock: true },
-  { id: 4, name: "Pants", category: "Clothing", price: 49, inStock: true },
-  {
-    id: 5,
-    name: "Headphones",
-    category: "Electronics",
-    price: 199,
-    inStock: true,
-  },
-  { id: 6, name: "Jacket", category: "Clothing", price: 89, inStock: false },
-];
 
 const total = products.reduce((acc, curr) => acc + curr.price, 0);
 
