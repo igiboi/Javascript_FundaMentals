@@ -15,9 +15,25 @@ const words = ["apple", "banana", "apple", "cherry", "banana", "apple"];
 // ["apple", "banana"]
 
 function wordFrequency(arr) {
-  // your code here
+  return arr.reduce((frequencyMap, word) => {
+    frequencyMap.set(word, (frequencyMap.get(word) || 0) + 1);
+    return frequencyMap;
+  }, new Map())
 }
 
+
 function getRepeatedWords(frequencyMap) {
-  // your code here
+  const filtered = [...frequencyMap.entries()]
+    .filter(([_, value]) =>  value > 1 )
+    .map(([key, _]) => key);
+
+  return filtered;
 }
+
+
+const freqMap = wordFrequency(words);
+console.log(getRepeatedWords(freqMap));
+// Expected: ["apple", "banana"]
+
+
+

@@ -1,0 +1,63 @@
+body {
+  font-family: sans-serif;
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+#tag-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+button {
+  padding: 6px 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  background: white;
+}
+
+button.active {
+  background: #333;
+  color: white;
+  border-color: #333;
+}
+
+#posts-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.post-card {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 16px;
+}
+
+.post-card h2 {
+  font-size: 1rem;
+  margin: 0 0 8px;
+}
+
+.post-card p {
+  font-size: 0.85rem;
+  color: #666;
+  margin: 0 0 8px;
+}
+
+.post-card .tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.post-card .tag {
+  font-size: 0.75rem;
+  background: #f0f0f0;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
