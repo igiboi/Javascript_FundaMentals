@@ -33,7 +33,7 @@ function groupByCityByMaps(contacts) {
     if (!cityMap.has(contact.city)) cityMap.set(contact.city, []);
     cityMap.get(contact.city).push(contact.name);
     return cityMap;
-  }, new Map())
+  }, new Map());
 }
 
 console.log(groupByCityByObjects(contacts));

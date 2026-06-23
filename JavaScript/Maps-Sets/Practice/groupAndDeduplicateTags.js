@@ -7,30 +7,19 @@ const posts = [
 
 // Given an array of posts, return a Map where each unique tag
 // maps to a Set of post titles that use that tag.
-
 function groupAndDeduplicateTags(posts) {
   return posts.reduce((postMap, post) => {
     post.tags.forEach((tag) => {
       if (!postMap.has(tag)) postMap.set(tag, new Set());
       postMap.get(tag).add(post.title);
     });
-    
     return postMap;
   }, new Map());
 }
 
-function groupAndDeduplicateTagsPlainObject(posts) {
-  return posts.reduce((postObject, post) => {
-    post.tags.forEach((tag) => {
-      if (!postObject[tag]) postObject[tag] = [];
-      postObject[tag].push(post.title);
-    });
-    return postObject;
-  }, {});
-}
 
 console.log(groupAndDeduplicateTags(posts));
-console.log(groupAndDeduplicateTagsPlainObject(posts));
+// console.log(groupAndDeduplicateTagsPlainObject(posts));
 
 // Expected output (Map):
 // "javascript" → Set { "JS Basics", "Array Methods", "Intro to Sets" }

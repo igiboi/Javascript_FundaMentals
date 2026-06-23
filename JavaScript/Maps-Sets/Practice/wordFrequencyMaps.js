@@ -14,21 +14,24 @@ const words = ["apple", "banana", "apple", "cherry", "banana", "apple"];
 // Words appearing more than once:
 // ["apple", "banana"]
 
-function wordFrequency(arr) {
-  return arr.reduce((frequencyMap, word) => {
-    frequencyMap.set(word, (frequencyMap.get(word) || 0) + 1);
-    return frequencyMap;
-  }, new Map())
+// need to count up each word then once we have the map we turn it into 
+// than array so I can filter and user map 
+
+function wordFrequency(words) {
+  return words.reduce((wordMap, word) => {
+    wordMap.set(word, (wordMap.get(word) || 0) + 1);
+    return wordMap;
+  }, new Map());
 }
 
-
-function getRepeatedWords(frequencyMap) {
-  const filtered = [...frequencyMap.entries()]
-    .filter(([_, value]) =>  value > 1 )
+function getRepeatedWords(freqMap) {
+  const filtered = [...freqMap.entries()]
+    .filter(([_, value]) => value > 1)
     .map(([key, _]) => key);
-
+  
   return filtered;
 }
+
 
 
 const freqMap = wordFrequency(words);
@@ -37,3 +40,17 @@ console.log(getRepeatedWords(freqMap));
 
 
 
+// function wordFrequency(arr) {
+//   return arr.reduce((frequencyMap, word) => {
+//     frequencyMap.set(word, (frequencyMap.get(word) || 0) + 1);
+//     return frequencyMap;
+//   }, new Map());
+// }
+
+// function getRepeatedWords(frequencyMap) {
+//   const filtered = [...frequencyMap.entries()]
+//     .filter(([_, value]) => value > 1)
+//     .map(([key, _]) => key);
+
+//   return filtered;
+// }
