@@ -31,5 +31,7 @@ the UI stays responsive while data is being read/written.
 WHEN TO USE IndexedDB: Offline-first apps, large datasets, apps
 that need to sync when reconnecting to the network. 
 
-GOTCHA:
+GOTCHA: The API is verbose and complex. In real projects most 
+developers use a library like DExie.js on top of IndexedDB to simplify it. 
+
 */
