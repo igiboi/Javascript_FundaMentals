@@ -8,9 +8,28 @@ const totalEl = document.getElementById("total");
 let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
 let editId = null;
 
+const renderExpenses = () => {
+  // wipe the screen, so we don't get duplicates
+  expensesContainer.innerHTML = "";
+
+  // loops through the expenses object 
+  expenses.forEach(({ id, title, category, amount }) => {
+    expensesContainer.innerHTML += `
+      <div class="expense" id="${id}">
+        <span>${title} — ${category} — $${amount}</span>
+        <button onclick="editExpense(this)">Edit</button>
+        <button onclick="deleteExpense(this)">Delete</button>
+      </div>
+    `;
+  });
+
+  const total = expenses.reduce((sum, expense) => sum + expense.amount, 0);
+  totalEl.textContent = total.toFixed(2);
+};
+
 const addOrUpdateExpense = () => {
   const expense = {
-    id: editId ?? Date.now(),   // reuse id if editing, new id if creating
+    id: editId ?? Date.now(), // reuse id if editing, new id if creating
     title: titleInput.value,
     category: categoryInput.value,
     amount: Number(amountInput.value),
@@ -24,7 +43,7 @@ const addOrUpdateExpense = () => {
 
     // find that id first
     const index = expenses.findIndex((item) => item.id === editId);
-    
+
     // overwrites the old expense at index with updated on
     expenses[index] = expense;
   }
@@ -35,24 +54,6 @@ const addOrUpdateExpense = () => {
   titleInput.value = "";
   categoryInput.value = "";
   amountInput.value = "";
-};
-
-
-const renderExpenses = () => {
-  expensesContainer.innerHTML = "";
-
-  expenses.forEach(({ id, title, category, amount }) => {
-    expensesContainer.innerHTML += `
-      <div class="expense" id="${id}">
-        <span>${title} — ${category} — $${amount}</span>
-        <button onclick="editExpense(this)">Edit</button>
-        <button onclick="deleteExpense(this)">Delete</button>
-      </div>
-    `;
-  });
-
-  const total = expenses.reduce((sum, expense) => sum + expense.amount, 0);
-  totalEl.textContent = total.toFixed(2);
 };
 
 const deleteExpense = (buttonEl) => {
