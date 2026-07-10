@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Expense Tracker</title>
+</head>
+
+<body>
+  <h1>Expense Tracker</h1>
+
+  <!-- Running total will be displayed here -->
+  <h2>Total: $<span id="total">0.00</span></h2>
+
+  <!-- The form for adding/editing an expense -->
+  <form id="expense-form">
+    <input type="text" id="title-input" placeholder="What did you buy?" />
+    <input type="text" id="category-input" placeholder="Category" />
+    <input type="number" id="amount-input" placeholder="Amount" step="0.01" />
+    <button type="submit" id="add-btn">Add Expense</button>
+  </form>
+
+  <!-- Expenses will be injected here by JavaScript -->
+  <div id="expenses-container"></div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
