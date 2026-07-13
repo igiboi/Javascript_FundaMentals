@@ -1,3 +1,4 @@
+// ZONE 1 SETUP — grab DOM elements
 const expenseForm = document.getElementById("expense-form");
 const titleInput = document.getElementById("title-input");
 const categoryInput = document.getElementById("category-input");
@@ -5,9 +6,11 @@ const amountInput = document.getElementById("amount-input");
 const expensesContainer = document.getElementById("expenses-container");
 const totalEl = document.getElementById("total");
 
+// ZONE 2 STATE - the data (expenses) + mode switch (editId)
 let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
 let editId = null;
 
+// ZONE 3 ACTIONS - the 4 functions (defined, parked, waiting)
 const renderExpenses = () => {
   // wipe the screen, so we don't get duplicates
   expensesContainer.innerHTML = "";
