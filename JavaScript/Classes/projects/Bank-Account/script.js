@@ -1,8 +1,6 @@
 // Build a Bank Account Management Program
 // Run with:  node script.js
 
-// ---- Write your code below ----
-
 // Data
 class BankAccount {
   constructor() {
@@ -31,11 +29,9 @@ class BankAccount {
 
     return `Successfully withdrew $${amount}. New balance: $${this.balance}`;
   }
-  // checkBalance()       ← return balance message
   checkBalance() {
     return `Current balance: $${this.balance}`;
   }
-  // listAllDeposits()    ← filter transactions → return deposits string
   listAllDeposits() {
     const deposit = this.transactions
       .filter((transaction) => transaction.type === "deposit")
@@ -44,7 +40,6 @@ class BankAccount {
 
     return `Deposits: ${deposit}`;
   }
-  // listAllWithdrawals() ← filter transactions → return withdrawals string
   listAllWithdrawals() {
     const deposit = this.transactions
       .filter((transaction) => transaction.type === "withdraw")
@@ -55,8 +50,6 @@ class BankAccount {
   }
 }
 
-// Create an account and give it 5 transactions (2 deposits, 3 withdrawals).
-// Final balance: 200 + 150 - 50 - 30 - 20 = 250  (> $100)
 const myAccount = new BankAccount();
 
 myAccount.deposit(200);
