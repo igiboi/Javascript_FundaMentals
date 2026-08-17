@@ -1,4 +1,6 @@
 import { useState } from "react";
+import ExpenseList from "./components/ExpenseList";
+import ExpenseForm from "./components/ExpenseForm";
 
 function App() {
 
@@ -50,41 +52,11 @@ function App() {
   return (
     <div>
       <h1>Expense Tracker</h1>
-      <input
-        type='text'
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-      />
-      <input
-        type='number'
-        value={amount}
-        onChange={(e) => setAmount(e.target.value)}
-      />
-      <button onClick={handleAddExpense}>Add Expense</button>
-      {/* error is null → falsy → returns null immediately, never looks at the <p>
-      error is a string → truthy → returns the right side, the <p> */}
-      {error && <p>{error}</p>}
-      <ul>
-        {expenses.map((expense) => (
-          <li key={expense.id}>
-            {editingId === expense.id ? (
-              <>{/* edit mode */}
-                <input value={editText} onChange={(e) => setEditText(e.target.value)} />
-                <button onClick={handleSaveEdit}>Save</button>
-              </>
-            ) : (
-              <>
-                {/* view mode */}
-                  {expense.description}: ${expense.amount} {/* Coffee: 5 */}
-                  <button onClick={() => handleStartEdit(expense)}>Edit</button>
-                  <button onClick={() => handleDeleteExpense(expense.id)}>
-                    Delete
-                  </button>
-              </>
-            )}
-          </li>
-        ))}
-      </ul>
+      <ExpenseForm description={description} setDescription={setDescription}
+        amount={amount} setAmount={setAmount} error={error} handleAddExpense={handleAddExpense} />
+      <ExpenseList expenses={expenses} editingId={editingId} editText={editText}
+        setEditText={setEditText} handleStartEdit={handleStartEdit} handleSaveEdit={handleSaveEdit}
+        handleDeleteExpense={handleDeleteExpense} />
       <h2>Total: ${total}</h2>
     </div>
   );
