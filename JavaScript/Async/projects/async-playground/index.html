@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Async Playground</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Async Playground</h1>
+      <p class="subtitle">
+        Nine drills. Each one runs real async code and prints what happened.
+      </p>
+    </header>
+
+    <main>
+      <!-- 1 -->
+      <section class="drill" id="drill-1">
+        <div class="drill-head">
+          <h2><span class="num">1</span> Callback vs Promise</h2>
+          <button class="run" data-drill="1">Run</button>
+        </div>
+        <p class="goal">
+          Same delay written two ways. Watch the order the lines print in.
+        </p>
+        <pre class="output" id="output-1">Not run yet.</pre>
+      </section>
+
+      <!-- 2 -->
+      <section class="drill" id="drill-2">
+        <div class="drill-head">
+          <h2><span class="num">2</span> Build a Promise by hand</h2>
+          <button class="run" data-drill="2">Run</button>
+        </div>
+        <p class="goal">
+          Use <code>new Promise</code> with <code>resolve</code> and
+          <code>reject</code>. Flip the coin to see both paths.
+        </p>
+        <pre class="output" id="output-2">Not run yet.</pre>
+      </section>
+
+      <!-- 3 -->
+      <section class="drill" id="drill-3">
+        <div class="drill-head">
+          <h2><span class="num">3</span> Promise chaining with .then()</h2>
+          <button class="run" data-drill="3">Run</button>
+        </div>
+        <p class="goal">
+          Three dependent requests using only <code>.then()</code> — no
+          <code>await</code> allowed in this one.
+        </p>
+        <pre class="output" id="output-3">Not run yet.</pre>
+      </section>
+
+      <!-- 4 -->
+      <section class="drill" id="drill-4">
+        <div class="drill-head">
+          <h2><span class="num">4</span> Same chain, with async/await</h2>
+          <button class="run" data-drill="4">Run</button>
+        </div>
+        <p class="goal">
+          Rewrite drill 3 using <code>async/await</code>. Compare the two by
+          eye.
+        </p>
+        <pre class="output" id="output-4">Not run yet.</pre>
+      </section>
+
+      <!-- 5 -->
+      <section class="drill" id="drill-5">
+        <div class="drill-head">
+          <h2><span class="num">5</span> Sequential vs Promise.all</h2>
+          <button class="run" data-drill="5">Run</button>
+        </div>
+        <p class="goal">
+          Four independent requests, timed both ways. The gap is the lesson.
+        </p>
+        <pre class="output" id="output-5">Not run yet.</pre>
+      </section>
+
+      <!-- 6 -->
+      <section class="drill" id="drill-6">
+        <div class="drill-head">
+          <h2><span class="num">6</span> Errors: fetch lies about 404</h2>
+          <button class="run" data-drill="6">Run</button>
+        </div>
+        <p class="goal">
+          Three failure modes: a real network error, a 404, and a bad JSON
+          parse. Only some reach <code>catch</code> on their own.
+        </p>
+        <pre class="output" id="output-6">Not run yet.</pre>
+      </section>
+
+      <!-- 7 -->
+      <section class="drill" id="drill-7">
+        <div class="drill-head">
+          <h2><span class="num">7</span> all vs allSettled vs race</h2>
+          <button class="run" data-drill="7">Run</button>
+        </div>
+        <p class="goal">
+          Same three promises, one of which rejects. Three combinators, three
+          very different results.
+        </p>
+        <pre class="output" id="output-7">Not run yet.</pre>
+      </section>
+
+      <!-- 8 -->
+      <section class="drill" id="drill-8">
+        <div class="drill-head">
+          <h2><span class="num">8</span> The .map() async trap</h2>
+          <button class="run" data-drill="8">Run</button>
+        </div>
+        <p class="goal">
+          An <code>async</code> callback inside <code>.map()</code>. Print what
+          you actually get back before fixing it.
+        </p>
+        <pre class="output" id="output-8">Not run yet.</pre>
+      </section>
+
+      <!-- 9 -->
+      <section class="drill" id="drill-9">
+        <div class="drill-head">
+          <h2><span class="num">9</span> Geolocation: callbacks → Promise</h2>
+          <button class="run" data-drill="9">Run</button>
+        </div>
+        <p class="goal">
+          A callback-based browser API. Wrap it so it works with
+          <code>await</code>.
+        </p>
+        <pre class="output" id="output-9">Not run yet.</pre>
+      </section>
+    </main>
+
+    <script src="./script.js" defer></script>
+  </body>
+</html>
