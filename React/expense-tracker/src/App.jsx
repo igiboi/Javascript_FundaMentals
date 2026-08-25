@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ExpenseList from "./components/ExpenseList";
 import ExpenseForm from "./components/ExpenseForm";
+import BudgetInput from "./components/BudgetInput";
 
 function App() {
 
@@ -10,6 +11,7 @@ function App() {
   const [error, setError] = useState(null);
   const [editingId, setEditingId] = useState(null);
   const [editText, setEditText] = useState("");
+  const [budget, setBudget] = useState("");
 
   function handleAddExpense() {
     if (description === '' || Number(amount) <= 0) {
@@ -49,15 +51,31 @@ function App() {
 
   const total = expenses.reduce((sum, expense) => sum + expense.amount, 0);
   
+  const remaining = Number(budget) - total;
+  
   return (
     <div>
       <h1>Expense Tracker</h1>
-      <ExpenseForm description={description} setDescription={setDescription}
-        amount={amount} setAmount={setAmount} error={error} handleAddExpense={handleAddExpense} />
-      <ExpenseList expenses={expenses} editingId={editingId} editText={editText}
-        setEditText={setEditText} handleStartEdit={handleStartEdit} handleSaveEdit={handleSaveEdit}
-        handleDeleteExpense={handleDeleteExpense} />
+      <BudgetInput budget={budget} setBudget={setBudget} />
+      <ExpenseForm
+        description={description}
+        setDescription={setDescription}
+        amount={amount}
+        setAmount={setAmount}
+        error={error}
+        handleAddExpense={handleAddExpense}
+      />
+      <ExpenseList
+        expenses={expenses}
+        editingId={editingId}
+        editText={editText}
+        setEditText={setEditText}
+        handleStartEdit={handleStartEdit}
+        handleSaveEdit={handleSaveEdit}
+        handleDeleteExpense={handleDeleteExpense}
+      />
       <h2>Total: ${total}</h2>
+      {budget && <h2>Remaining: ${remaining}</h2>}
     </div>
   );
 }
