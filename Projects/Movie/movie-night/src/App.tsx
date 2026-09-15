@@ -10,13 +10,14 @@ function App() {
 
   return (
     <>
-      <input
-        value={query}
-        onChange={(event) => setQuery(event?.target.value)}
-      />
-    
+      <label htmlFor="search">Search movies</label>
+        <input
+          id="search"
+          value={query}
+          onChange={(event) => setQuery(event.target.value)}
+        />
     </>
-  )
+  );
 }
 
 export default App;
