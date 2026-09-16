@@ -23,10 +23,14 @@ function App() {
         }
       })
       .catch((err) => {
-        setError(err.message);
+        if (!ignore) {
+          setError(err.message);
+        }
       })
       .finally(() => {
-      setLoading(false)
+        if (!ignore) {
+          setLoading(false)
+        }
       })
     
     return () => {
