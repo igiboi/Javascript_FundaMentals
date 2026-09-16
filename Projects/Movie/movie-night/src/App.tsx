@@ -12,6 +12,15 @@ function App() {
     console.log(`START  "${query}"`);
     let ignore = false;
 
+    // Empty box means no search — don't hit TMDB for "" or whitespace.
+    const emptyQuery = query.trim() === "";
+    if (emptyQuery) {
+      setMovies([]);
+      setLoading(false);
+      setError(null);
+      return;
+    }
+
     setLoading(true);
     setError(null);
 
@@ -19,7 +28,7 @@ function App() {
       .then((result) => {
         console.log(`BACK   "${query}" — ignore is ${ignore}`);
         if (!ignore) {
-        setMovies(result);
+          setMovies(result);
         }
       })
       .catch((err) => {
@@ -29,14 +38,14 @@ function App() {
       })
       .finally(() => {
         if (!ignore) {
-          setLoading(false)
+          setLoading(false);
         }
-      })
-    
+      });
+
     return () => {
       console.log(`CLEANUP for "${query}" - ignore is ${ignore}`);
       ignore = true;
-    }
+    };
   }, [query])
 
 
