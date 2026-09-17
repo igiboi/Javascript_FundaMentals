@@ -208,3 +208,38 @@ value. Add later if wanted.
 
 - TMDB API key — not yet confirmed. Blocks rung 1. Rung 0 does not need it.
 - Which backend, and when. Not decided.
+
+## Design decisions — search results grid (2026-09-17)
+
+Compared three layouts as a mockup before writing any markup.
+
+**Search results use Option A** — dense grid, 150px minimum column, caption
+under the poster. Search is a scanning task: the user already knows roughly
+what they want and finds it by poster, not by reading titles. So posters get
+the most screen per row and nothing sits on top of them.
+
+**Rejected: the card treatment** (surface + border + radius on every result).
+Border, fill, radius and shadow each say "separate object" — but a search
+result already reads as separate, and the grid gap does that work. Spending
+all four on every item flattens the hierarchy, leaving nothing in reserve for
+when something genuinely needs to stand out (the overlap badge at rung 5). It
+also costs roughly 70px of chrome per row, so fewer results fit.
+
+**Rejected: caption overlaid on the poster.** It looks the most finished, but
+text over an image cannot have a guaranteed contrast ratio — the poster
+underneath is arbitrary. A gradient scrim helps and does not guarantee. Long
+titles also push up into the artwork, and the card becomes one visual block,
+which is harder to give an accessible name once a button goes inside it at
+rung 2.
+
+**The card treatment moves to the watchlist**, where each entry is an object
+you act on — rate it, remove it, see whose list it is on. Chrome is justified
+when there are controls to contain. Note that rung 2 already commits to
+horizontal rows there rather than a grid, so revisit the exact shape then; a
+150px-wide card is too narrow to hold the star widget from rung 4 at an
+accessible target size.
+
+**Missing posters render a styled placeholder with the title**, not a generic
+stock image. Roughly one TMDB result in five has `poster_path: null`. A
+placeholder that names the film degrades honestly; a stock "no image" graphic
+adds a request and says less.
