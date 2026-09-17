@@ -11,7 +11,6 @@ function App() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    console.log(`START  "${query}"`);
     let ignore = false;
 
     // Empty box means no search — don't hit TMDB for "" or whitespace.
@@ -29,7 +28,6 @@ function App() {
     const timer = setTimeout(() => {
       searchMovies(query)
         .then((result) => {
-          console.log(`BACK   "${query}" — ignore is ${ignore}`);
           if (!ignore) {
             setMovies(result);
           }
@@ -47,7 +45,6 @@ function App() {
     }, 300);
     // Cancel the pending timer and discard any in-flight response
     return () => {
-      console.log(`CLEANUP for "${query}" - ignore is ${ignore}`);
       clearTimeout(timer);
       ignore = true;
     };
