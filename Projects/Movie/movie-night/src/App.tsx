@@ -74,7 +74,7 @@ function App() {
                 <div className="poster-fallback">{movie.title}</div>
               )}
               <p className="poster-title">{movie.title}</p>
-              <p className="poster-year">{movie.releaseDate.slice(0, 4)}</p>
+              <p className="poster-year">{movie.releaseDate?.slice(0, 4) || "-"}</p>
             </li>
           ))}
         </ul>
