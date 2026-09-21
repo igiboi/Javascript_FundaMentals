@@ -1,14 +1,12 @@
 import { useEffect, useState } from "react";
-import type { Movie } from "./types/movie";
 import { searchMovies } from "./lib/tmdb";
+import type { SearchState } from "./types/searchState";
 import "./App.css";
 
 
 function App() {
   const [query, setQuery] = useState<string>("");
-  const [movies, setMovies] = useState<Movie[]>([]);
-  const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<string | null>(null);
+  const [search, setSearch] = useState<SearchState>({ status: "idle" });
 
   useEffect(() => {
     let ignore = false;
@@ -16,30 +14,23 @@ function App() {
     // Empty box means no search — don't hit TMDB for "" or whitespace.
     const emptyQuery = query.trim() === "";
     if (emptyQuery) {
-      setMovies([]);
-      setLoading(false);
-      setError(null);
+      setSearch({ status: "idle" });
       return;
     }
 
-    setLoading(true);
-    setError(null);
-
     const timer = setTimeout(() => {
+      // Loading starts when the request does, not while the user is typing.
+      setSearch({ status: "loading" });
+
       searchMovies(query)
         .then((result) => {
           if (!ignore) {
-            setMovies(result);
+            setSearch({ status: "success", movies: result });
           }
         })
         .catch((err) => {
           if (!ignore) {
-            setError(err.message);
-          }
-        })
-        .finally(() => {
-          if (!ignore) {
-            setLoading(false);
+            setSearch({ status: "error", message: err.message });
           }
         });
     }, 300);
@@ -59,30 +50,35 @@ function App() {
         value={query}
         onChange={(event) => setQuery(event.target.value)}
       />
-      {error && <p>{error}</p>}
-      {loading && <p>Loading...</p>}
-      {movies.length > 0 && (
-        <ul className="poster-grid">
-          {movies.map((movie) => (
-            <li key={movie.id} className="poster-card">
-              {movie.posterPath ? (
-                <img
-                  src={`https://image.tmdb.org/t/p/w342${movie.posterPath}`}
-                  alt=""
-                />
-              ) : (
-                <div className="poster-fallback">{movie.title}</div>
-              )}
-              <p className="poster-title">{movie.title}</p>
-              <p className="poster-year">{movie.releaseDate?.slice(0, 4) || "-"}</p>
-            </li>
-          ))}
-        </ul>
-      )}
-      {!error &&
-        !loading &&
-        movies.length === 0 &&
-        (query === "" ? <p>Search for a movie</p> : <p>No results found</p>)}
+      {search.status === "idle" && <p>Search for a movie</p>}
+
+      {search.status === "loading" && <p>Loading...</p>}
+
+      {search.status === "error" && <p>{search.message}</p>}
+
+      {search.status === "success" &&
+        (search.movies.length === 0 ? (
+          <p>No results found</p>
+        ) : (
+          <ul className="poster-grid">
+            {search.movies.map((movie) => (
+              <li key={movie.id} className="poster-card">
+                {movie.posterPath ? (
+                  <img
+                    src={`https://image.tmdb.org/t/p/w342${movie.posterPath}`}
+                    alt=""
+                  />
+                ) : (
+                  <div className="poster-fallback">{movie.title}</div>
+                )}
+                <p className="poster-title">{movie.title}</p>
+                <p className="poster-year">
+                  {movie.releaseDate?.slice(0, 4) || "-"}
+                </p>
+              </li>
+            ))}
+          </ul>
+        ))}
     </div>
   );
 }
