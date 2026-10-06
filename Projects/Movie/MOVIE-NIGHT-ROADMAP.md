@@ -116,6 +116,31 @@ Not rungs. They run across the build and get their own dedicated sessions.
   `color-mix()` for hover states derived from tokens, and one animation
   written by hand rather than reached for from a library.
 
+## Learning map — FCC and docs per rung
+
+Decided 2026-10-06. Each rung pairs with one FCC piece and one or two doc
+pages, so every lesson connects to code being written.
+
+The build leads; reading follows. The FCC piece is a short warm-up before
+the rung starts. The docs get read during the rung, at the moment the code
+hits that problem. One or two pages, never a reading list up front.
+
+| Rung | FCC warm-up | Docs, read during the rung |
+|------|-------------|----------------------------|
+| 4 Reviews + stars | Build an Event RSVP lab | WAI-ARIA APG Radio Group pattern; MDN `:focus-visible` |
+| 5 Overlap view | Reusable Footer + Mood Board labs | react.dev Choosing the State Structure; Sharing State Between Components |
+| 6 Recommendations | TS: Type Composition, then Generics and Type Narrowing | MDN `reduce` and `Map`; TS Handbook Generics |
+| 7 Activity feed | React Strategies and Debugging | react.dev You Might Not Need an Effect; Reusing Logic with Custom Hooks |
+| 8 URL filters | Routing, React Frameworks theory | React Router `useSearchParams` |
+| 9 Stats + Profiler | Performance section | react.dev `memo` and `useMemo`; web.dev Core Web Vitals |
+| 10 Polish | Build a Color Picker App lab | MDN container queries, `:has()`, View Transitions |
+| 11 State at scale | — | react.dev Scaling Up with Reducer and Context; Zustand source |
+| Testing pass | Testing section | Testing Library Guiding Principles |
+
+Spare time only: React Basics Review and Quiz; TS configuration files theory
+(the first time `tsconfig` gets confusing); CSS Libraries and Frameworks
+(only if a job or this project needs Tailwind).
+
 ## Checkpoints — the part that tests you
 
 Guided building teaches recognition. Recall is a different skill and it
