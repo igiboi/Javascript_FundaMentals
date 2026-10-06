@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flashcards</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="app-header">
+        <h1>Flashcards</h1>
+        <p class="hint">Click the card to flip it.</p>
+      </header>
+
+      <section class="deck">
+        <div id="flashcard" class="card">
+          <div class="card-inner">
+            <div class="card-face card-front">
+              <span class="card-label">Question</span>
+              <p id="card-question"></p>
+            </div>
+            <div class="card-face card-back">
+              <span class="card-label">Answer</span>
+              <p id="card-answer"></p>
+            </div>
+          </div>
+        </div>
+
+        <button id="delete-btn" class="btn btn-danger" type="button">Delete card</button>
+      </section>
+
+      <form id="entry-form" class="entry-form">
+        <h2>Add a card</h2>
+
+        <label for="front-text">Question</label>
+        <textarea id="front-text" rows="3"></textarea>
+
+        <label for="back-text">Answer</label>
+        <textarea id="back-text" rows="3"></textarea>
+
+        <button class="btn btn-primary" type="submit">Add card</button>
+      </form>
+    </main>
+
+    <script src="index.ts"></script>
+  </body>
+</html>

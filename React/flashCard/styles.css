@@ -1,0 +1,172 @@
+:root {
+  --color-bg: #f4f1ea;
+  --color-surface: #ffffff;
+  --color-ink: #1f2933;
+  --color-muted: #6b7280;
+  --color-accent: #2f6f5e;
+  --color-accent-back: #e8f1ee;
+  --color-danger: #b4432f;
+  --color-border: #d9d4c7;
+  --radius: 14px;
+  --shadow: 0 8px 24px rgba(31, 41, 51, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: var(--color-bg);
+  color: var(--color-ink);
+}
+
+.app {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 48px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.hint {
+  margin: 4px 0 0;
+  color: var(--color-muted);
+}
+
+/* Deck */
+
+.deck {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Card flip: .flipped on #flashcard rotates .card-inner */
+
+.card {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease;
+  transform-style: preserve-3d;
+}
+
+.card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 24px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  backface-visibility: hidden;
+  text-align: center;
+}
+
+.card-front {
+  background: var(--color-surface);
+}
+
+.card-back {
+  background: var(--color-accent-back);
+  transform: rotateY(180deg);
+}
+
+.card-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.card-face p {
+  margin: 0;
+  font-size: 1.25rem;
+  line-height: 1.4;
+}
+
+/* Form */
+
+.entry-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 24px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.entry-form h2 {
+  margin: 0 0 8px;
+  font-size: 1.125rem;
+}
+
+.entry-form label {
+  font-size: 0.875rem;
+  color: var(--color-muted);
+}
+
+.entry-form textarea {
+  font: inherit;
+  padding: 10px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  resize: vertical;
+}
+
+.entry-form textarea:focus {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 1px;
+}
+
+/* Buttons */
+
+.btn {
+  font: inherit;
+  font-weight: 600;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-primary {
+  margin-top: 8px;
+  background: var(--color-accent);
+  color: #ffffff;
+}
+
+.btn-danger {
+  background: transparent;
+  color: var(--color-danger);
+  border: 1px solid var(--color-danger);
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
