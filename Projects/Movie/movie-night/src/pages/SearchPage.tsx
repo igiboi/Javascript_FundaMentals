@@ -5,9 +5,10 @@ import type { Movie } from "../types/movie";
 
 type SearchPageProps = {
   addToWatchlist: (movie: Movie) => void;
+  isOnWatchlist: (movieId: number) => boolean;
 };
 
-function SearchPage({ addToWatchlist }: SearchPageProps) {
+function SearchPage({ addToWatchlist, isOnWatchlist }: SearchPageProps) {
   const [query, setQuery] = useState<string>("");
   const [search, setSearch] = useState<SearchState>({ status: "idle" });
 
@@ -63,23 +64,32 @@ function SearchPage({ addToWatchlist }: SearchPageProps) {
           <p>No results found</p>
         ) : (
           <ul className="poster-grid">
-            {search.movies.map((movie) => (
-              <li key={movie.id} className="poster-card">
-                {movie.posterPath ? (
-                  <img
-                    src={`https://image.tmdb.org/t/p/w342${movie.posterPath}`}
-                    alt=""
-                  />
-                ) : (
-                  <div className="poster-fallback">{movie.title}</div>
-                )}
-                <p className="poster-title">{movie.title}</p>
-                <p className="poster-year">
-                  {movie.releaseDate?.slice(0, 4) || "-"}
-                </p>
-                <button onClick={() => addToWatchlist(movie)}>Add to Watchlist</button>
-              </li>
-            ))}
+            {search.movies.map((movie) => {
+              const added = isOnWatchlist(movie.id);
+
+              return (
+                <li key={movie.id} className="poster-card">
+                  {movie.posterPath ? (
+                    <img
+                      src={`https://image.tmdb.org/t/p/w342${movie.posterPath}`}
+                      alt=""
+                    />
+                  ) : (
+                    <div className="poster-fallback">{movie.title}</div>
+                  )}
+                  <p className="poster-title">{movie.title}</p>
+                  <p className="poster-year">
+                    {movie.releaseDate?.slice(0, 4) || "-"}
+                  </p>
+                  <button
+                    onClick={() => addToWatchlist(movie)}
+                    disabled={added}
+                  >
+                    {added ? "Added ✓" : "Add to Watchlist"}
+                  </button>
+                </li>
+              );
+            })}
           </ul>
         ))}
     </>

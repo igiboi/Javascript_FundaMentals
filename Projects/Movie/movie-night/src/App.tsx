@@ -28,10 +28,17 @@ const [watchlist, setWatchlist] = useState<Movie[]>(() =>
     setWatchlist(watchlist.filter((movie) => movie.id !== movieId));
   }
 
+  function isOnWatchlist(movieId: number) {
+    return watchlist.some((movie) => movie.id === movieId);
+  }
+
   return (
     <div className="page">
       <h1>Movie Night</h1>
-      <SearchPage addToWatchlist={addToWatchlist} />
+      <SearchPage
+        addToWatchlist={addToWatchlist}
+        isOnWatchlist={isOnWatchlist}
+      />
       <WatchlistPage
         watchlist={watchlist}
         removeFromWatchlist={removeFromWatchlist}
